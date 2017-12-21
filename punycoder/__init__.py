@@ -32,7 +32,7 @@ def get(url):
         if need_punycode(part) == True:
             code = part
             try:
-                code = part.decode('utf8')
+                code = part.encode('utf-8').decode('utf-8')
             except UnicodeEncodeError as e:
                 pass
 
@@ -41,8 +41,8 @@ def get(url):
         ret_parts.append(part)
 
     if o.query == "":
-        target_url = "{0}://{1}{2}".format(o.scheme, '.'.join(ret_parts), o.path)
+        target_url = "{0}://{1}{2}".format(o.scheme, '.'.join(ret_parts), o.path).replace("b'", "").replace("'", "")
     else:
-        target_url = "{0}://{1}{2}?{3}".format(o.scheme, '.'.join(ret_parts), o.path, o.query)
+        target_url = "{0}://{1}{2}?{3}".format(o.scheme, '.'.join(ret_parts), o.path, o.query).replace("b'", "").replace("'", "")
 
     return target_url
