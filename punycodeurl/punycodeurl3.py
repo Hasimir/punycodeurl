@@ -6,14 +6,18 @@ from urllib.parse import urlparse
 
 def get(url):
     if type(url) == str:
-        if url.startswith('http://') is False and \
-           url.startswith('https://') is False:
+        if url.startswith('http://') is True or
+            url.startswith('https://') is True:
+            pass
+        else:
             url = "http://{0}".format(url)
     elif type(url) == unicode:
         # Unlikely to appear in Python 3, but leaving intact for now.
-        if url.startswith(u'http://') is False and \
-           url.startswith(u'https://') is False:
-            url = u"http://{0}".format(url)
+        if url.startswith(u'http://') is True or
+           url.startswith(u'https://') is True:
+           pass
+       else:
+           url = u"http://{0}".format(url)
 
     def need_punycode(string):
         for ch in string:
