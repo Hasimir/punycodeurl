@@ -1,7 +1,8 @@
+
 PunycodeURL
 ===========
 
-The original punycodeurl 0.1 for Python 2 remains unchanged.  The additional punycoder module provides the same function for Python 3.  Aside from the module name, the usage is identical.
+The original punycodeurl 0.1 for Python 2 remains unchanged, though moved to a separate file.  The equivalent functions for Python 3 are in a corresponding file and the module now detects calls the correct version depending on which version of Python is detected as in use.
 
 punycodeurl
 -----------
@@ -13,14 +14,17 @@ import punycodeurl
 punycodeurl.get('http://www.찰샴맨.com')
 ```
 
+Installation
+------------
 
+To install for Python 2 run:
 
-punycoder
----------
+```shell
+python setup.py install
+```
 
-punycode encode for url
+To install for Python 3 run:
 
-```python3
-import punycoder
-punycoder.get('http://www.大班.com')
+```shell
+python3 setup.py install
 ```
